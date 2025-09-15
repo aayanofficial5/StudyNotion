@@ -27,6 +27,14 @@ exports.resetToken = async (req, res) => {
       });
     }
 
+    if (user?.googleId) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Your account is linked with Google. Please sign in using Google instead of resetting a password.",
+      });
+    }
+
     // check if token is already generated
     if(user.resetPasswordExpires>Date.now()){
       return res.status(400).json({

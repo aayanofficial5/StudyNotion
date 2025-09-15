@@ -10,16 +10,16 @@ const ProfileDropDown = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.profile.user);
-  let image,quality=10;
-  if (!user.image.includes("/upload/")) image = user.image;
-  else image = user.image.replace("/upload/", `/upload/q_${quality}/`);
-
+  let image,
+    quality = 10;
+  if (!user?.image?.includes("/upload/")) image = user?.image;
+  else image = user.image?.replace("/upload/", `/upload/q_${quality}/`);
   return (
     <div className="flex flex-row justify-center items-center gap-4">
       <Link to="/dashboard/my-profile" className="hover:text-blue-500">
-        <div className="h-9 w-9 border-1 rounded-full overflow-hidden">
+        <div className="h-9 w-9 border-1 rounded-full overflow-hidden">{console.log("Image URL:", image)}
           <img
-            src={image || profile}
+            src={`${image || profile}`}
             alt="Profile"
             className="h-full w-full object-cover"
           />

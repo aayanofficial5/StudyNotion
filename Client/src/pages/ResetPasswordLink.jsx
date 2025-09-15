@@ -21,7 +21,7 @@ const ResetPasswordLink = () => {
   };
 
   return (
-    <div className="flex justify-center items-center text-white w-full min-h-[89vh] text-3xl">
+    <div className="flex justify-center items-center text-white w-full min-h-[89vh] text-3xl bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950">
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">
           <Loading />

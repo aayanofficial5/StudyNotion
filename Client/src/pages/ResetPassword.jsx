@@ -28,7 +28,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="flex justify-center items-center text-white w-full h-[89vh]">
+    <div className="flex justify-center items-center text-white w-full h-[89vh] bg-gradient-to-br from-slate-950 via-gray-900 to-slate-950">
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">
           <Loading />

@@ -102,18 +102,17 @@ async function verifyPayment(paymentData, navigate, dispatch, token) {
     const response = await apiConnector("POST", verifyPaymentApi, paymentData, {
       Authorization: `Bearer ${token}`,
     });
+    console.log("Payment verified Response:", response);
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    console.log("Payment verified Response:", response);
     toast.success(response?.data?.message);
     dispatch(resetCart());
     localStorage.setItem("totalItems", JSON.stringify(0));
     navigate("/dashboard/enrolled-courses");
   } catch (error) {
-    console.error("Error in verifyPayment:", error);
-    const errMsg = error?.response?.data?.message;
-    toast.error(errMsg);
+    console.error("Error verifying payment:",error);
+    toast.error("Error in verifying payment,Please Contact Support");
   } finally {
     toast.dismiss(toastId);
     dispatch(setPaymentLoading(false));

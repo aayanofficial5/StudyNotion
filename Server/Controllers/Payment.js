@@ -11,7 +11,6 @@ const {
 const CourseProgress = require("../Models/CourseProgress");
 require("dotenv").config();
 
-
 // capturePayment handler function
 exports.capturePayment = async (req, res) => {
   try {
@@ -75,7 +74,7 @@ exports.capturePayment = async (req, res) => {
       data: paymentResponse,
     });
   } catch (error) {
-    console.log("Error creating order: " + error.message);
+    console.log("Error creating order: ", error);
     return res.status(500).json({
       success: false,
       message: "Error creating order",
@@ -189,7 +188,6 @@ exports.enrollFreeCourse = async (req, res) => {
   return res.status(result.success ? 200 : 400).json(result);
 };
 
-
 const enrollInFreeCourses = async (userId, courses) => {
   const errors = [];
   const enrolledCourses = [];
@@ -235,6 +233,7 @@ const enrollInFreeCourses = async (userId, courses) => {
             },
             { new: true }
           );
+          // console.log(updatedUser);
 
           await mailSender(
             updatedUser.email,

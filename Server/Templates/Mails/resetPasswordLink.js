@@ -1,47 +1,101 @@
-exports.resetPasswordLink = (firstName,resetLink) => {
-  return `<!DOCTYPE html>
-<html lang="en" style="font-family: Arial, sans-serif;">
+exports.resetPasswordLink = (firstName, resetLink) => {
+  return `
+    <!DOCTYPE html>
+    <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8">
     <title>Reset Your Password</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+        color: #f5f5f5;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #0d1117;
+      }
+      .container {
+        padding: 30px;
+      }
+      .header {
+        background: linear-gradient(135deg, #0d47a1, #1976d2);
+        padding: 25px;
+        text-align: center;
+        border-radius: 8px 8px 0 0;
+      }
+      .header h1 {
+        color: #ffffff;
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .content {
+        padding: 25px;
+        background-color: #161b22;
+        border-radius: 0 0 8px 8px;
+      }
+      .content p {
+        color: #d1d5db;
+        margin-bottom: 15px;
+      }
+      .button {
+        display: inline-block;
+        background-color: #2563eb;
+        color: white !important;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        margin: 30px 0;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+        color: #6c757d;
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      a {
+        color: #60a5fa;
+      }
+    </style>
   </head>
-  <body style="background-color: #f4f4f4; padding: 20px;">
-    <table width="100%" cellspacing="0" cellpadding="0">
-      <tr>
-        <td align="center">
-          <table width="600" style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
-            <tr>
-              <td align="center" style="padding-bottom: 20px;">
-                <h2 style="color: #333;">Reset Your Password</h2>
-              </td>
-            </tr>
-            <tr>
-              <td style="color: #555; font-size: 16px;">
-                <p>Hi ${firstName},</p>
-                <p>We received a request to reset your password. Click the button below to create a new one:</p>
-                <div style="text-align: center; margin: 30px 0;">
-                  <a
-                    href="${resetLink}"
-                    target="_blank"
-                    style="background-color: #007bff; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; display: inline-block;"
-                  >
-                    Reset Password
-                  </a>
-                </div>
-                <p>If you didn’t request this, you can safely ignore this email.</p>
-                <p style="margin-top: 30px;">Thanks,<br />The Learning Platform Team</p>
-              </td>
-            </tr>
-            <tr>
-              <td align="center" style="font-size: 12px; color: #aaa; padding-top: 20px;">
-                © 2025 Learning Platform. All rights reserved.
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
+  <body>
+    <div class="container">
+      <div class="logo">
+         <img src="https://res.cloudinary.com/djpjyg8my/image/upload/v1757926849/Screenshot_2025-09-15_140613_dndwn6.png" alt="StudyHub Logo" width="250"/>
+      </div>
+
+      <div class="header">
+        <h1>Reset Your Password</h1>
+      </div>
+
+      <div class="content">
+        <p>Hi <strong>${firstName}</strong>,</p>
+
+        <p>We received a request to reset your password. Click the button below to create a new one:</p>
+
+        <div style="text-align: center;">
+          <a href="${resetLink}" class="button" target="_blank">Reset Password</a>
+        </div>
+
+        <p>If you didn’t request this, you can safely ignore this email. Your password will remain unchanged.</p>
+
+        <p style="margin-top: 30px;">Thanks,<br/>The StudyHub Team</p>
+      </div>
+
+    <div class="footer">
+      <p>This is an automated message, please do not reply to this email.</p>
+      <p>If you need further assistance, please contact us at 
+        <a href="mailto:info.studyhub.tech@gmail.com">info.studyhub.tech@gmail.com</a>.
+      </p>
+      <p>&copy; ${new Date().getFullYear()} StudyHub. All rights reserved.</p>
+    </div>
+    </div>
   </body>
-</html>
-`;
+</html>`;
 };
