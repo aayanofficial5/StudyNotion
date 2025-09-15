@@ -7,6 +7,8 @@ const userRoutes = require("./Routes/User");
 const courseRoutes = require("./Routes/Course");
 const paymentRoutes = require("./Routes/Payments");
 const profileRoutes = require("./Routes/Profile");
+const chatRoutes = require('./Routes/Chat');
+
 const app = express();
 require("dotenv").config();
 const cors = require("cors");
@@ -39,6 +41,8 @@ app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/course", courseRoutes);
 app.use("/api/v1/payment", auth,isStudent, paymentRoutes);
 app.use("/api/v1/profile", auth, profileRoutes);
+app.use('/api/v1/chat', chatRoutes);
+
 
 // default route
 app.get("/", (req, res) => {
