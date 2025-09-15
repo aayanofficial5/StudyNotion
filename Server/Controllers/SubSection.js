@@ -169,7 +169,6 @@ exports.deleteSubSection = async (req, res) => {
     ).populate("subSection");
     
     // delete the subsection
-    delete subSection
     await SubSection.findByIdAndDelete(subSectionId);
 
     // return response
