@@ -13,8 +13,7 @@ import Contact from "./pages/Contact.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 
 // Components
-import Navbar from "./components/Home/NavBar.jsx";
-import Footer from "./components/Home/Footer.jsx";
+import Navbar from "./components/Common/NavBar.jsx";
 import MyProfile from "./components/Dashboard/Common/MyProfile.jsx";
 import EnrolledCourses from "./components/Dashboard/Student/EnrolledCourses.jsx";
 import Cart from "./components/Dashboard/Student/Cart.jsx";
@@ -30,6 +29,7 @@ import CourseDetails from "./pages/CourseDetails.jsx";
 import VideoDetails from "./components/Core/ViewCourse/VideoDetails.jsx";
 import ViewCourse from "./pages/ViewCourse.jsx";
 import { ACCOUNT_TYPE } from "./utils/constant.js";
+import Chatbot from "./components/Common/ChatBot.jsx";
 
 const App = () => {
   const { pathname } = useLocation();
@@ -40,7 +40,7 @@ const App = () => {
   const user = useSelector((state) => state.profile.user);
 
   return (
-    <div className="max-h-fit bg-black opacity-90 flex flex-col w-screen mx-auto">
+    <><div className="max-h-fit bg-black opacity-90 flex flex-col w-screen mx-auto">
       {/* <div className="flex flex-col items-center bg-blue-500">
       <h1 className="text-white">Welcome to Our Application</h1>
       </div> */}
@@ -106,6 +106,8 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
+    <Chatbot/>
+    </>
   );
 };
 

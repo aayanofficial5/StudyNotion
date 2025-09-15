@@ -48,44 +48,6 @@ Here is a high-level diagram that illustrates the architecture of the StudyHub e
 
 ---
 
-## 🖼️ Screenshots
-
-Here are some key screens from the project showcasing various pages and features:
-
-### 🏠 Common Pages
-- **Home Page**  
-  ![Home Page](./Screenshots/common/home.png)
-
-- **Catalog Filter Page**  
-  ![Catalog Filter Page](./Screenshots/common/catalog-filter.png)
-
-- **Course Details Page**  
-  ![Catalog Filter Page](./Screenshots/common/course-details.png)
-
-- **About Page**  
-  ![About Page](./Screenshots/common/about.png)
-
-- **Contact Page**  
-  ![Contact Page](./Screenshots/common/contact.png)
-
-- **Login Page**  
-  ![Login Page](./Screenshots/common/login.png)
-
-- **Signup Page**  
-  ![Signup Page](./Screenshots/common/signup.png)
-
-- **User Dashboard**  
-  ![Dashboard](./Screenshots/common/dashboard.png)
-
-### 🎓 Instructor Interface
-- **Instructor – Courses Overview**  
-  ![Instructor Courses View](./Screenshots/instructor/instructor-courses.png)
-
-- **Instructor – Add New Course**  
-  ![Add Course View](./Screenshots/instructor/instructor-add-course.png)
-
----
-
 ## ✨ Features
 
 ### 👨‍🏫 Instructor Features
@@ -110,48 +72,66 @@ Here are some key screens from the project showcasing various pages and features
 
 ## 🛠️ Tech Stack
 
-| Layer       | Tech Used                      |
-|-------------|---------------------------------|
-| Frontend   | React.js, Redux Toolkit, Tailwind CSS |
-| Backend    | Node.js, Express.js             |
-| Database   | MongoDB                         |
-| Media Hosting | Cloudinary                   |
-| Auth       | JWT, bcrypt                     |
-| Dev Tools  | Postman, VS Code, GitHub        |
+| Layer              | Technology                                                                 |
+|--------------------|----------------------------------------------------------------------------|
+| **Frontend**       | [React.js](https://reactjs.org/), [Redux Toolkit](https://redux-toolkit.js.org/), [Tailwind CSS](https://tailwindcss.com/), [Axios](https://axios-http.com/) |
+| **Backend**        | [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/), [Mongoose](https://mongoosejs.com/) |
+| **Database**       | [MongoDB Atlas](https://www.mongodb.com/atlas) (Cloud-hosted NoSQL DB)     |
+| **Authentication** | [JWT](https://jwt.io/), [bcrypt.js](https://github.com/kelektiv/node.bcrypt.js), Google OAuth 2.0 |
+| **Cloud Storage**  | [Cloudinary](https://cloudinary.com/)                                     |
+| **Payments**       | [Razorpay](https://razorpay.com/)                                          |
+| **Email Service**  | [Nodemailer](https://nodemailer.com/) with SMTP (e.g., Gmail)   |
+| **Dev Tools**      | [Postman](https://www.postman.com/), [VS Code](https://code.visualstudio.com/), [GitHub](https://github.com/), [ESLint](https://eslint.org/), [Prettier](https://prettier.io/) |
+| **Environment Config** | [dotenv](https://github.com/motdotla/dotenv)                         |
+| **Build & Deploy** | [Vite](https://vitejs.dev/) (Frontend), [Vercel](https://vercel.com/) (Frontend Hosting), [Vercel](https://vercel.com/) (Backend Hosting) |
 
----
 
 ## 📁 Folder Structure
 
 ```
 StudyHub/
 ├── Client/                           # Frontend React app
-│   ├── .env                          # Environment variables (not pushed to Git)
-│   ├── public/                       # Public assets (images, etc.)
+│   ├── .env                          # Frontend environment variables
+│   ├── index.html                    # Main HTML file
+│   ├── package.json                  # Frontend dependencies and scripts
+│   ├── vite.config.js                # Vite config for frontend build
+│   ├── public/                       # Static assets
 │   └── src/                          # Source code
-│       ├── assets/                   # Images, icons, etc.
+│       ├── App.jsx                   # App root component
+│       ├── main.jsx                  # Entry point
+│       ├── index.css                 # Global styles
+│       ├── assets/                   # Images, icons, banners, logos
 │       ├── components/               # Reusable UI components
-│       ├── pages/                    # Route-based page components
-│       ├── services/                 # API services
-│       └── data/                     # Data management (e.g., JSON files)
-│    
+│       │   ├── Authentication/       # Login, signup, Google button, etc.
+│       │   ├── Common/               # Shared UI elements (Navbar, Footer, etc.)
+│       │   ├── Core/                 # Course-related views and logic
+│       │   ├── Dashboard/            # Student & Instructor dashboards
+│       │   └── Home/                 # Homepage sections
+│       ├── data/                     # JSON/static mock data
+│       ├── pages/                    # Route-based pages (Home, Login, Signup, etc.)
+│       ├── redux/                    # Redux store and feature slices
+│       ├── services/                 # API connectors and operations
+│       └── utils/                    # Utility functions
+│
 ├── Server/                           # Backend Express app
-│   ├── .env                          # Environment variables (not pushed to Git)
-│   ├── Configurations/                # Config files (e.g., DB, API settings)
-│   ├── Controllers/                   # Route logic and handlers
-│   ├── Extra/                        # Additional server files (scripts, etc.)
-│   ├── Middlewares/                  # Express middleware
-│   ├── Models/                       # Mongoose models
-│   ├── Routes/                       # API route definitions
-│   ├── Templates/                    # Email templates, etc.
-│   └── utils/                        # Utility functions
-├── Screenshots/                      # Screenshots for documentation
-│   ├── common/                       # Common screenshots
-│   ├── instructor/                   # Instructor-specific screenshots
-│   └── student/                      # Student-specific screenshots
-├── LICENSE                           # Project license
-└── README.md                         # Main documentation file
-
+│   ├── .env                          # Backend environment variables
+│   ├── server.js                     # Server entry point
+│   ├── package.json                  # Backend dependencies and scripts
+│   ├── Configurations/              # DB, Cloudinary, Razorpay setup
+│   ├── Controllers/                 # API logic and route handlers
+│   ├── Extra/                       # File upload handling, additional logic
+│   ├── Middlewares/                # Custom middleware
+│   │   ├── Authentication/          # JWT auth middleware
+│   │   └── Authorization/           # Role-based access control
+│   ├── Models/                      # MongoDB models/schemas
+│   ├── Routes/                      # Route definitions
+│   ├── Templates/                  # Email templates and assets
+│   │   ├── Controllers/             # Mail preview images
+│   │   └── Mails/                   # Email HTML/JS templates
+│   └── utils/                       # Utility functions (e.g., fileUploader, mailSender)
+│
+├── LICENSE                          # License file
+└── README.md                        # Main documentation file
 ```
 
 ---
@@ -189,7 +169,7 @@ Create a `.env` file inside the `/Server` folder with the following configuratio
 ```env
 # Server Configuration
 PORT=4000
-BACKEND_URL=<your_backend_url_here>   # (e.g., http://localhost:4000/api/v1)
+BACKEND_URL=<your_backend_url_here>/api/v1   # (e.g., http://localhost:4000/api/v1)
 FRONTEND_URL=<your_frontend_url_here> # (e.g., http://localhost:5173)
 DATABASE_URL=<your_database_connection_url_here>
 
@@ -210,6 +190,10 @@ MAIL_PASS=<your_mail_password_here>
 # Razorpay Payment Gateway Configuration
 RAZORPAY_ID=<your_razorpay_id_here>
 RAZORPAY_SECRET=<your_razorpay_secret_here>
+
+# Google Signup/Login Configurations
+GOOGLE_CLIENT_ID = <your_google_client_id>
+GOOGLE_CLIENT_SECRET = <your_google_client_secret>
 ```
 
 #### For the Frontend:
@@ -217,7 +201,13 @@ Create a `.env` file inside the `/Client` folder with the following configuratio
 
 ```env
 # Vite API URL (to connect with the backend API)
-VITE_API_URL=<your_backend_url_here>   # (e.g., http://localhost:4000/api/v1)
+VITE_API_URL=<your_backend_url_here>/api/v1   # (e.g., http://localhost:4000/api/v1)
+
+# Razorpay Payment Gateway Configuration
+VITE_RAZORPAY_ID=<your_razorpay_id_here>
+
+# Google Signup/Login Configurations
+VITE_GOOGLE_CLIENT_ID = <your_google_client_id>
 ```
 
 ---
@@ -227,19 +217,17 @@ VITE_API_URL=<your_backend_url_here>   # (e.g., http://localhost:4000/api/v1)
 ```bash
 # Start backend in a terminal with the following commands:
 cd Server
-npm start
+npm run dev
 
 # Start frontend in another terminal with the following commands:
 cd Client
-npm start
+npm run dev
 ```
 
 ---
 
 ## 💡 Future Improvements
 
-- Payment Integration (Razorpay/Stripe)
-- Certificate generation for course completion
 - Chat or forum feature for learners
 - Admin dashboard for platform management
 
